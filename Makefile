@@ -11,6 +11,10 @@ OBJS = $(DEPS:.c=.o)
 CFLAGS  = -std=c99 -Ideps -Wall -Wno-unused-function -U__STRICT_ANSI__
 LDFLAGS = -lcurl
 
+ifeq ($(OS),Windows_NT)
+LDFLAGS = -lcurldll
+endif
+
 all: $(BINS)
 
 $(BINS): $(SRC) $(OBJS)
